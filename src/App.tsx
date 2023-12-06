@@ -6,7 +6,6 @@ import { Snackbar } from "burgos-snackbar"
 import { ConfirmDialog } from "burgos-confirm"
 
 function App() {
-    const [count, setCount] = useState(0)
 
     return (
         <Providers>

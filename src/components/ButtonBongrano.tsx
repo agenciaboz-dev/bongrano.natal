@@ -3,5 +3,6 @@ import { Button, ButtonProps } from "@mui/material"
 import { button_style } from "../styles/button"
 
 export const ButtonBongrano: React.FC<ButtonProps> = (props) => {
-    return <Button variant="contained" {...props} sx={{ ...button_style }}></Button>
+    const sx = { ...button_style, ...props.sx }
+    return <Button variant="contained" {...props} sx={sx}></Button>
 }
