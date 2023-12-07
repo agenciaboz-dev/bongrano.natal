@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react"
 import BallTwo from "../assets/Peça 2 - Bolinha.webp"
 import Selo from "../assets/Peça 1.1 - Selo Natal.png"
-import { Avatar, Box, CircularProgress, LinearProgress, TextField } from "@mui/material"
+import { Avatar, Box, LinearProgress, TextField } from "@mui/material"
 import { colors } from "../styles/colors"
 import { PaperBall } from "../components/PaperBall"
 import { ButtonBongrano } from "../components/ButtonBongrano"
 import { useNavigate } from "react-router-dom"
 import { InputBongrano } from "../components/InputBongrano"
-import { Form, Formik, useFormik } from "formik"
+import { useFormik } from "formik"
 import { Rules } from "../components/Rules"
 import { useArray } from "burgos-array"
 import { useIo } from "../hooks/useIo"
@@ -104,10 +104,9 @@ export const Indicate: React.FC<IndicateProps> = ({ user }) => {
                                     value={item.whatsapp}
                                     onChange={formik.handleChange}
                                     sx={input_style}
-                                    
                                     InputProps={{
                                         inputComponent: MaskedInput,
-                                        inputProps: { mask: masks.phone }
+                                        inputProps: { mask: masks.phone, inputMode: "numeric" }
                                     }}
                                     required
                                 />
