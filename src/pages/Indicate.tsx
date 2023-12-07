@@ -109,10 +109,10 @@ export const Indicate: React.FC<IndicateProps> = ({}) => {
                                     value={item.whatsapp}
                                     onChange={formik.handleChange}
                                     sx={input_style}
+                                    
                                     InputProps={{
-                                        inputMode: "numeric",
                                         inputComponent: MaskedInput,
-                                        inputProps: { mask: masks.phone },
+                                        inputProps: { mask: masks.phone, inputMode: "numeric" },
                                     }}
                                     required
                                 />

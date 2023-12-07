@@ -6,5 +6,5 @@ interface InputBongranoProps {}
 
 export const InputBongrano: React.FC<TextFieldProps> = (props) => {
     const sx = { ...input_style, ...props.sx }
-    return <TextField {...props} InputProps={{ ...props.InputProps, inputProps: props.InputProps?.inputProps }} sx={sx} />
+    return <TextField {...props} sx={sx} />
 }
