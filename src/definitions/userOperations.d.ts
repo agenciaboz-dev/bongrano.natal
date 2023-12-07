@@ -3,7 +3,7 @@ declare interface NewUser {
     address: string
     number: string
     cep: string
-    adjunct?: string
+    adjunct: string
     email: string
     whatsapp: string
 }
@@ -25,11 +25,7 @@ declare interface VerifyForm {
 }
 
 declare interface ChooseDateForm {
-    timestamps: {
-        start: string
-        end: string
-    }
+    date: string
 
     user_id: number
 }
-

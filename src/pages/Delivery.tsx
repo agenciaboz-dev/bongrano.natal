@@ -19,20 +19,17 @@ export const Delivery: React.FC<DeliveryProps> = ({ user }) => {
     const navigate = useNavigate()
     const io = useIo()
 
-    const [dates, setDates] = useState<[Date | null, Date | null]>([null, null])
+    const [date, setDate] = useState<Date | null>(null)
     const [loading, setLoading] = useState(false)
 
     const handleSubmit = () => {
         if (loading) return
-        if (!dates.every((item) => !!item)) {
+        if (!date) {
             return
         }
 
         const data: ChooseDateForm = {
-            timestamps: {
-                start: dates[1]!.getTime().toString(),
-                end: dates[0]!.getTime().toString()
-            },
+            date: date.getTime().toString(),
             user_id: user.id
         }
 
@@ -69,7 +66,15 @@ export const Delivery: React.FC<DeliveryProps> = ({ user }) => {
                     agenda. Você pode escolher entre os dias 21, 22 ou 23 de dezembro, e especificar se prefere receber pela manhã ou à tarde. Agende
                     agora e prepare-se para uma doce surpresa!
                 </p>
-                <DatePicker type="range" value={dates} onChange={setDates} />
+
+                <DatePicker
+                    value={date}
+                    onChange={setDate}
+                    minDate={new Date(2023, 11, 21)}
+                    maxDate={new Date(2023, 11, 23)}
+                    styles={{ day: { borderRadius: "100%" } }}
+                    getDayProps={(day) => ({ style: { color: day.getDate() == 23 ? (day.getDate() == date?.getDate() ? "white" : "black") : "" } })}
+                />
             </PaperBall>
             <img src={Selo} alt="" />
             <PaperBall>
