@@ -57,7 +57,7 @@ export const Delivery: React.FC<DeliveryProps> = ({ user }) => {
     }, [])
 
     return (
-        <Box sx={{ width: "100%", height: "100%", overflowY: "auto", gap: "4vw", flexDirection: "column" }}>
+        <Box sx={{ width: "100%", height: "100%", overflowY: "auto", gap: "4vw", flexDirection: "column", padding: "10vw" }}>
             <PaperBall>
                 <img src={BallThree} alt="" style={{ width: "45vw" }} />
                 <p style={{ fontWeight: "600", fontSize: "3.8vw", textAlign: "center" }}>Escolha o Melhor Dia para Sua Surpresa!</p>

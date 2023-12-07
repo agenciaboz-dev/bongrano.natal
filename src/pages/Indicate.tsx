@@ -67,7 +67,7 @@ export const Indicate: React.FC<IndicateProps> = ({ user }) => {
         }
     }, [])
     return (
-        <Box sx={{ width: "100%", height: "100%", overflowY: "auto", gap: "4vw", flexDirection: "column" }}>
+        <Box sx={{ width: "100%", height: "100%", overflowY: "auto", gap: "4vw", flexDirection: "column", padding: "10vw" }}>
             <form onSubmit={formik.handleSubmit} style={{ display: "contents" }}>
                 <PaperBall>
                     <img src={BallTwo} alt="" style={{ width: "45vw" }} />

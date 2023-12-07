@@ -77,21 +77,18 @@ export const Signup: React.FC<SignupProps> = ({}) => {
         }
     }, [])
     return (
-        <Box sx={{ width: "100%", height: "100%", overflowY: "auto", gap: "4vw", flexDirection: "column" }}>
+        <Box sx={{ width: "100%", height: "100%", overflowY: "auto", gap: "4vw", flexDirection: "column", padding: "10vw" }}>
             <Formik initialValues={initialValues} onSubmit={(values) => handleSubmit(values)} enableReinitialize>
                 {({ values, handleChange }) => (
                     <Form>
                         <PaperBall sx={{ gap: "8vw" }}>
                             <Box sx={{ flexDirection: "column", alignItems: "center", gap: "4vw" }}>
                                 <img src={BallOne} alt="" style={{ width: "45vw" }} />
-                                <p style={{ fontWeight: "600", fontSize: "3.8vw", textAlign: "center" }}>
-                                    Atualize Seus Dados e Fique por Dentro!
-                                </p>
+                                <p style={{ fontWeight: "600", fontSize: "3.8vw", textAlign: "center" }}>Atualize Seus Dados e Fique por Dentro!</p>
                                 <p style={{ textAlign: "center", color: colors.terciary, fontSize: "2.8vw" }}>
-                                    Queremos garantir que você não perca nenhuma novidade! Por favor, atualize seus dados
-                                    para continuar recebendo informações exclusivas e ofertas especiais da Bongrano. É rápido
-                                    e fácil - apenas confirme seu nome completo, endereço, e-mail e WhatsApp. Lembre-se, suas
-                                    informações estão seguras conosco!
+                                    Queremos garantir que você não perca nenhuma novidade! Por favor, atualize seus dados para continuar recebendo
+                                    informações exclusivas e ofertas especiais da Bongrano. É rápido e fácil - apenas confirme seu nome completo,
+                                    endereço, e-mail e WhatsApp. Lembre-se, suas informações estão seguras conosco!
                                 </p>
                             </Box>
 
@@ -112,38 +109,21 @@ export const Signup: React.FC<SignupProps> = ({}) => {
                                         onChange={handleChange}
                                         required
                                     />
-                                    <InputBongrano
-                                        label="Número"
-                                        name="number"
-                                        value={values.number}
-                                        onChange={handleChange}
-                                        required
-                                    />
+                                    <InputBongrano label="Número" name="number" value={values.number} onChange={handleChange} required />
                                     <TextField
                                         label="CEP"
                                         name="cep"
                                         sx={input_style}
                                         InputProps={{
                                             inputComponent: MaskedInput,
-                                            inputProps: { mask: masks.cep, inputMode: "numeric" },
+                                            inputProps: { mask: masks.cep, inputMode: "numeric" }
                                         }}
                                         value={values.cep}
                                         onChange={handleChange}
                                         required
                                     />
-                                    <InputBongrano
-                                        label="Complemento"
-                                        name="adjunct"
-                                        value={values.adjunct}
-                                        onChange={handleChange}
-                                    />
-                                    <InputBongrano
-                                        label="E-mail"
-                                        name="email"
-                                        value={values.email}
-                                        onChange={handleChange}
-                                        required
-                                    />
+                                    <InputBongrano label="Complemento" name="adjunct" value={values.adjunct} onChange={handleChange} />
+                                    <InputBongrano label="E-mail" name="email" value={values.email} onChange={handleChange} required />
                                     <TextField
                                         label="Whatsapp"
                                         name="whatsapp"
@@ -152,7 +132,7 @@ export const Signup: React.FC<SignupProps> = ({}) => {
                                         sx={input_style}
                                         InputProps={{
                                             inputComponent: MaskedInput,
-                                            inputProps: { mask: masks.phone, inputMode: "numeric" },
+                                            inputProps: { mask: masks.phone, inputMode: "numeric" }
                                         }}
                                         required
                                     />
@@ -162,9 +142,7 @@ export const Signup: React.FC<SignupProps> = ({}) => {
 
                         <img src={Selo} alt="" />
                         <PaperBall>
-                            <p style={{ width: "100%", fontWeight: "600", textAlign: "left", fontSize: "3.8vw" }}>
-                                Regras de participação
-                            </p>
+                            <p style={{ width: "100%", fontWeight: "600", textAlign: "left", fontSize: "3.8vw" }}>Regras de participação</p>
                             <Rules />
                         </PaperBall>
                         <Box sx={{ justifyContent: "space-between" }}>

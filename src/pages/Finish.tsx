@@ -12,19 +12,26 @@ import TwitterIcon from "@mui/icons-material/Twitter"
 import InstagramIcon from "@mui/icons-material/Instagram"
 import PublicSharpIcon from "@mui/icons-material/PublicSharp"
 import { Rules } from "../components/Rules"
+import { useUser } from "../hooks/useUser"
 
 interface FinishProps {
     user: User
 }
 
 export const Finish: React.FC<FinishProps> = ({ user }) => {
+    const { setUser } = useUser()
     const navigate = useNavigate()
+
+    const handleFinish = () => {
+        setUser(null)
+        navigate("../home")
+    }
 
     useEffect(() => {
         window.scroll(0, 0)
     }, [])
     return (
-        <Box sx={{ width: "100%", height: "100%", overflowY: "auto", gap: "4vw", flexDirection: "column" }}>
+        <Box sx={{ width: "100%", height: "100%", overflowY: "auto", gap: "4vw", flexDirection: "column", padding: "10vw" }}>
             <PaperBall>
                 <img src={Gift} alt="" style={{ width: "45vw" }} />
                 <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>Presente Agendado</p>
@@ -45,7 +52,7 @@ export const Finish: React.FC<FinishProps> = ({ user }) => {
                 <p style={{ width: "100%", fontWeight: "600", textAlign: "left", fontSize: "3.8vw" }}>Regras de participação</p>
                 <Rules />
             </PaperBall>
-            <ButtonBongrano sx={{ alignSelf: "end" }} onClick={() => navigate("../home")}>
+            <ButtonBongrano sx={{ alignSelf: "end" }} onClick={handleFinish}>
                 Voltar para o início
             </ButtonBongrano>
         </Box>

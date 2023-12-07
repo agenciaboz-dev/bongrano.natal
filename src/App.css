@@ -42,7 +42,6 @@ body {
     background-image: url("./assets/backgroundWrap.png");
     background-position: center;
     background-size: cover;
-    padding:10vw;
 }
 
 #root {

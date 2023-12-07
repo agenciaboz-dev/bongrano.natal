@@ -37,7 +37,7 @@ export const Home: React.FC<HomeProps> = ({}) => {
     }, [])
 
     return (
-        <Box sx={{ width: "100%", height: "90%", display: "flex", alignItems: "end", overflow: "hidden" }}>
+        <Box sx={{ width: "100%", height: "90%", display: "flex", alignItems: "end", overflow: "hidden", padding: "10vw" }}>
             <Box sx={{ flexDirection: "column", height: "100%", width: "100%", overflow: "hidden" }}>
                 <img src={RibbonH} alt="" style={{ width: "135vw", position: "fixed", left: "-2vw", top: "41vw" }} />
                 <img

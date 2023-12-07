@@ -87,7 +87,7 @@ export const Verification: React.FC<VerificationProps> = ({ user }) => {
     }, [])
 
     return user ? (
-        <Box sx={{ width: "100%", height: "100%", overflowY: "auto", gap: "4vw", flexDirection: "column" }}>
+        <Box sx={{ width: "100%", height: "100%", overflowY: "auto", gap: "4vw", flexDirection: "column", padding: "10vw" }}>
             <PaperBall>
                 <img src={BallOne} alt="" style={{ width: "45vw" }} />
                 <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>Atualize Seus Dados e Fique por Dentro!</p>
