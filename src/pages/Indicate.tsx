@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import BallTwo from "../assets/Peça 2 - Bolinha.webp"
 import Selo from "../assets/Peça 1.1 - Selo Natal.png"
-import { Avatar, Box, TextField } from "@mui/material"
+import { Avatar, Box, CircularProgress, LinearProgress, TextField } from "@mui/material"
 import { colors } from "../styles/colors"
 import { PaperBall } from "../components/PaperBall"
 import { ButtonBongrano } from "../components/ButtonBongrano"
@@ -107,13 +107,13 @@ export const Indicate: React.FC<IndicateProps> = ({}) => {
                                     label="Whatsapp"
                                     name={`referrals[${index}].whatsapp`}
                                     value={item.whatsapp}
-                                    onChange={ formik.handleChange }
+                                    onChange={formik.handleChange}
                                     sx={input_style}
-                                        InputProps={{
-                                            inputMode: "numeric",
-                                            inputComponent: MaskedInput,
-                                            inputProps: { mask: masks.phone },
-                                        }}
+                                    InputProps={{
+                                        inputMode: "numeric",
+                                        inputComponent: MaskedInput,
+                                        inputProps: { mask: masks.phone },
+                                    }}
                                     required
                                 />
                             </Box>
@@ -132,6 +132,7 @@ export const Indicate: React.FC<IndicateProps> = ({}) => {
                 <ButtonBongrano sx={{ alignSelf: "end" }} type="submit">
                     Próximo
                 </ButtonBongrano>
+                {loading && <LinearProgress color="primary" sx={{ width: "100%", borderRadius: "5vw" }} />}
             </form>
         </Box>
     )
