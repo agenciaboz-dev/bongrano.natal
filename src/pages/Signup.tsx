@@ -29,13 +29,13 @@ export const Signup: React.FC<SignupProps> = ({}) => {
     const [loading, setLoading] = useState(false)
 
     const initialValues: NewUser = {
-        name: "",
-        email: "",
-        whatsapp: "",
+        name: user?.name || "",
+        email: user?.email || "",
+        whatsapp: user?.whatsapp || "",
         address: "",
         cep: "",
         number: "",
-        adjunct: "",
+        adjunct: ""
     }
 
     const handleSubmit = async (values: NewUser) => {
@@ -45,6 +45,7 @@ export const Signup: React.FC<SignupProps> = ({}) => {
             ...values,
             cep: unmask(values.cep),
             whatsapp: unmask(values.whatsapp),
+            id: user?.id
         }
 
         io.emit("user:create", data)

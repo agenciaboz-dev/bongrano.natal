@@ -18,6 +18,7 @@ export const Routes: React.FC<RoutesProps> = ({}) => {
         <ReactRoutes>
             <Route index element={<Home />} />
             <Route path="/*" element={<Home />} />
+            <Route path="/referree/:hash" element={<Home />} />
             <Route path="/resume" element={<Resume />} />
             <Route path="/signup" element={<Signup />} />
             {user && <Route path="/verificate" element={<Verification user={user} />} />}
