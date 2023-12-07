@@ -10,16 +10,16 @@ import { useLocation, useNavigate } from "react-router-dom"
 import { InputBongrano } from "../components/InputBongrano"
 import { token_style } from "../styles/input"
 import { Rules } from "../components/Rules"
-import { useUser } from "../hooks/useUser"
 import { useSnackbar } from "burgos-snackbar"
 import { useIo } from "../hooks/useIo"
 
-interface VerificationProps {}
+interface VerificationProps {
+    user: User
+}
 
-export const Verification: React.FC<VerificationProps> = ({}) => {
+export const Verification: React.FC<VerificationProps> = ({ user }) => {
     const io = useIo()
     const navigate = useNavigate()
-    const { user, setUser } = useUser()
     const { snackbar } = useSnackbar()
 
     const validCode = "ABCDE" // Exemplo de código válido
@@ -62,11 +62,8 @@ export const Verification: React.FC<VerificationProps> = ({}) => {
 
     useEffect(() => {
         io.on("application:status:approved", () => {
-            if (user) {
-                setUser(user)
-                snackbar({ severity: "success", text: "Indique seus amigos" })
-                navigate("/indicate")
-            }
+            snackbar({ severity: "success", text: "Indique seus amigos" })
+            navigate("/indicate")
             setLoading(false)
         })
         io.on("application:aproval:error", (data) => {

@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom"
 import { InputBongrano } from "../components/InputBongrano"
 import { Form, Formik, useFormik } from "formik"
 import { Rules } from "../components/Rules"
-import { useUser } from "../hooks/useUser"
 import { useArray } from "burgos-array"
 import { useIo } from "../hooks/useIo"
 import { useSnackbar } from "burgos-snackbar"
@@ -17,14 +16,15 @@ import { input_style } from "../styles/input"
 import MaskedInput from "../components/MaskedInput"
 import masks from "../styles/masks"
 
-interface IndicateProps {}
+interface IndicateProps {
+    user: User
+}
 
-export const Indicate: React.FC<IndicateProps> = ({}) => {
+export const Indicate: React.FC<IndicateProps> = ({ user }) => {
     const io = useIo()
     const navigate = useNavigate()
     const { snackbar } = useSnackbar()
     const list = useArray().newArray(3)
-    const { user, setUser } = useUser()
     const [loading, setLoading] = useState(false)
 
     if (!user) return null
@@ -32,12 +32,12 @@ export const Indicate: React.FC<IndicateProps> = ({}) => {
     const formik = useFormik<ReferralForm>({
         initialValues: {
             referree_id: user.id,
-            referrals: list.map(() => ({ email: "", name: "", whatsapp: "" })),
+            referrals: list.map(() => ({ email: "", name: "", whatsapp: "" }))
         },
         onSubmit: (values) => {
             handleSubmit(values)
             console.log(values)
-        },
+        }
     })
 
     const handleSubmit = async (values: ReferralForm) => {
@@ -71,23 +71,18 @@ export const Indicate: React.FC<IndicateProps> = ({}) => {
             <form onSubmit={formik.handleSubmit} style={{ display: "contents" }}>
                 <PaperBall>
                     <img src={BallTwo} alt="" style={{ width: "45vw" }} />
-                    <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>
-                        Compartilhe a Alegria com Amigos!
-                    </p>
+                    <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>Compartilhe a Alegria com Amigos!</p>
                     <p style={{ textAlign: "center", color: colors.terciary, fontSize: "2.8vw" }}>
-                        A Bongrano acredita que a felicidade fica ainda melhor quando compartilhada. Indique três amigos de
-                        Curitiba e dê a eles a chance de desfrutar de nossos produtos incríveis! Basta adicionar os números
-                        de celular dos seus amigos diretamente da sua lista de contatos - é simples assim. Além disso, vocês
-                        todos participarão dos nossos emocionantes sorteios de 2024!
+                        A Bongrano acredita que a felicidade fica ainda melhor quando compartilhada. Indique três amigos de Curitiba e dê a eles a
+                        chance de desfrutar de nossos produtos incríveis! Basta adicionar os números de celular dos seus amigos diretamente da sua
+                        lista de contatos - é simples assim. Além disso, vocês todos participarão dos nossos emocionantes sorteios de 2024!
                     </p>
 
                     <Box sx={{ width: "100%", p: "2vw", gap: "8vw", flexDirection: "column" }}>
                         {formik.values.referrals.map((item, index) => (
                             <Box sx={{ flexDirection: "column", gap: "3vw", alignItems: "center" }} key={index}>
                                 <Avatar sx={{ bgcolor: colors.primary, width: "27vw", height: "27vw" }} />
-                                <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>
-                                    Indicação {index + 1}
-                                </p>
+                                <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>Indicação {index + 1}</p>
                                 <InputBongrano
                                     label="Nome Completo"
                                     name={`referrals[${index}].name`}
@@ -112,7 +107,7 @@ export const Indicate: React.FC<IndicateProps> = ({}) => {
                                     InputProps={{
                                         inputMode: "numeric",
                                         inputComponent: MaskedInput,
-                                        inputProps: { mask: masks.phone },
+                                        inputProps: { mask: masks.phone }
                                     }}
                                     required
                                 />
@@ -123,9 +118,7 @@ export const Indicate: React.FC<IndicateProps> = ({}) => {
 
                 <img src={Selo} alt="" />
                 <PaperBall>
-                    <p style={{ width: "100%", fontWeight: "600", textAlign: "left", fontSize: "3.8vw" }}>
-                        Regras de participação
-                    </p>
+                    <p style={{ width: "100%", fontWeight: "600", textAlign: "left", fontSize: "3.8vw" }}>Regras de participação</p>
                     <Rules />
                 </PaperBall>
 

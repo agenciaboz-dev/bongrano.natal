@@ -10,7 +10,5 @@ export const button_style: SxProps = {
     border: `2px solid ${colors.primary}`,
     p: "0vw 4vw 0 4vw",
     maxWidth: "max-content",
-    display: "flex",
-    
-    
+    display: "flex"
 }

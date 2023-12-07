@@ -7,20 +7,23 @@ import { Indicate } from "./pages/Indicate"
 import { Delivery } from "./pages/Delivery"
 import { Verification } from "./pages/Verification"
 import { Finish } from "./pages/Finish"
+import { useUser } from "./hooks/useUser"
 
 interface RoutesProps {}
 
 export const Routes: React.FC<RoutesProps> = ({}) => {
+    const { user } = useUser()
+
     return (
         <ReactRoutes>
             <Route index element={<Home />} />
             <Route path="/*" element={<Home />} />
             <Route path="/resume" element={<Resume />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/verificate" element={<Verification />} />
-            <Route path="/indicate" element={<Indicate />} />
-            <Route path="/delivery" element={<Delivery />} />
-            <Route path="/finish" element={<Finish />} />
+            {user && <Route path="/verificate" element={<Verification user={user} />} />}
+            {user && <Route path="/indicate" element={<Indicate user={user} />} />}
+            {user && <Route path="/delivery" element={<Delivery user={user} />} />}
+            {user && <Route path="/finish" element={<Finish user={user} />} />}
         </ReactRoutes>
     )
 }
