@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { ChangeEvent, useEffect, useRef, useState } from "react"
 import BallOne from "../assets/Peça 1 - Bolinha.webp"
 import BallThree from "../assets/Peça 3 - Bolinha.webp"
 import Selo from "../assets/Peça 1.1 - Selo Natal.png"
@@ -6,16 +6,79 @@ import { Box } from "@mui/material"
 import { colors } from "../styles/colors"
 import { PaperBall } from "../components/PaperBall"
 import { ButtonBongrano } from "../components/ButtonBongrano"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { InputBongrano } from "../components/InputBongrano"
 import { token_style } from "../styles/input"
 import { Dots } from "../components/Dots"
 import { Rules } from "../components/Rules"
+import { useUser } from "../hooks/useUser"
+import { useSnackbar } from "burgos-snackbar"
+import { useIo } from "../hooks/useIo"
 
 interface VerificationProps {}
 
 export const Verification: React.FC<VerificationProps> = ({}) => {
+    const io = useIo()
     const navigate = useNavigate()
+    const { user, setUser } = useUser()
+    const { snackbar } = useSnackbar()
+
+    const validCode = "ABCDE" // Exemplo de código válido
+    const inputRefs = useRef<HTMLInputElement[]>([])
+    const [code, setCode] = useState<string[]>(Array(5).fill(""))
+
+    const initialValues: VerifyForm = {
+        id: user?.id || 0,
+        code: "",
+    }
+
+    const handleChange = (index: number) => (event: ChangeEvent<HTMLInputElement>) => {
+        const newCode = [...code]
+        newCode[index] = event.target.value.toUpperCase()
+
+        if (index < 4 && newCode[index].length === 1) {
+            inputRefs.current[index + 1].focus()
+        }
+
+        setCode(newCode)
+        newCode.join("")
+
+        if (newCode.join("").length === 5) {
+            validateCode(newCode.join(""))
+        }
+    }
+
+    const validateCode = (inputCode: string) => {
+        io.emit("user:verify", { id: user?.id, code: inputCode })
+        if (inputCode === validCode) {
+            console.log("Código válido!")
+
+            // Coloque aqui a lógica de navegação ou validação
+        } else {
+            console.log("Código inválido")
+        }
+    }
+    useEffect(() => {
+        io.on("application:status:approved", () => {
+            if (user) {
+                setUser(user)
+                snackbar({ severity: "success", text: "Indique seus amigos" })
+                navigate("/indicate")
+            }
+        })
+        io.on("application:aproval:error", (data) => {
+            const errorMessage = data.error ? data.error : "Falha no cadastro!"
+            snackbar({ severity: "error", text: errorMessage })
+        })
+
+        return () => {
+            io.off("application:status:approved")
+            io.off("application:aproval:error")
+        }
+    }, [])
+    useEffect(() => {
+        inputRefs.current[0].focus()
+    }, [])
 
     useEffect(() => {
         window.scroll(0, 0)
@@ -39,11 +102,19 @@ export const Verification: React.FC<VerificationProps> = ({}) => {
                     <span style={{ fontWeight: "bold" }}>email@dominio.com.br</span>
                 </p>
                 <Box sx={{ p: "4vw", gap: "2.5vw" }}>
-                    <InputBongrano sx={token_style} />
-                    <InputBongrano sx={token_style} />
-                    <InputBongrano sx={token_style} />
-                    <InputBongrano sx={token_style} />
-                    <InputBongrano sx={token_style} />
+                    {code.map((_, index) => (
+                        <>
+                            <InputBongrano
+                                sx={token_style}
+                                key={index}
+                                inputRef={(el) => (inputRefs.current[index] = el)}
+                                type="text"
+                                inputProps={{ maxLength: 1 }}
+                                value={code[index]}
+                                onChange={handleChange(index)}
+                            />
+                        </>
+                    ))}
                 </Box>
                 <Dots value={1} />
             </PaperBall>
@@ -53,14 +124,11 @@ export const Verification: React.FC<VerificationProps> = ({}) => {
                 <p style={{ width: "100%", fontWeight: "600", textAlign: "left", fontSize: "3.8vw" }}>
                     Regras de participação
                 </p>
-                <Rules/>
+                <Rules />
             </PaperBall>
             <Box sx={{ justifyContent: "space-between" }}>
                 <ButtonBongrano sx={{ alignSelf: "end" }} onClick={() => navigate("../signup")}>
                     Voltar
-                </ButtonBongrano>
-                <ButtonBongrano sx={{ alignSelf: "end" }} onClick={() => navigate("../indicate")}>
-                    Próximo
                 </ButtonBongrano>
             </Box>
         </Box>

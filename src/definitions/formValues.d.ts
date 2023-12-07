@@ -1,15 +1,35 @@
-declare interface FormValues {
+declare interface NewUser {
     name: string
-    email: string
-    whastapp: string
     address: string
-    cep: string
     number: string
-    complement?: string
+    cep: string
+    adjunct?: string
+    email: string
+    whatsapp: string
 }
 
-declare interface FormIndicate{
+declare interface Referral {
     name: string
     email: string
     whatsapp: string
 }
+
+declare interface ReferralForm {
+    referrals: Referral[]
+    referree_id: number
+}
+
+declare interface VerifyForm {
+    id: number
+    code: string
+}
+
+declare interface ChooseDateForm {
+    timestamps: {
+        start: string
+        end: string
+    }
+
+    user_id: number
+}
+

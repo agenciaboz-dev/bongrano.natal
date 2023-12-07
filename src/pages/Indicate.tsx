@@ -16,12 +16,12 @@ interface IndicateProps {}
 export const Indicate: React.FC<IndicateProps> = ({}) => {
     const navigate = useNavigate()
 
-    const values: FormIndicate = {
+    const values: Referral = {
         name: "",
         email: "",
         whatsapp: "",
     }
-    const handleSubmit = (values: FormIndicate) => {
+    const handleSubmit = (values: Referral) => {
         console.log(values)
     }
 

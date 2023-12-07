@@ -32,7 +32,6 @@ export const Finish: React.FC<FinishProps> = ({}) => {
                     perca as novidades e ofertas exclusivas. Agradecemos por ser parte da família Bongrano!
                 </p>
                 <Box sx={{ gap: "3vw" }}>
-                    <TwitterIcon fontSize="large" onClick={() => {}} />
                     <PublicSharpIcon fontSize="large" onClick={() => {}} />
                     <FacebookIcon fontSize="large" onClick={() => {}} />
                     <InstagramIcon fontSize="large" onClick={() => {}} />
@@ -44,7 +43,7 @@ export const Finish: React.FC<FinishProps> = ({}) => {
                 <p style={{ width: "100%", fontWeight: "600", textAlign: "left", fontSize: "3.8vw" }}>
                     Regras de participação
                 </p>
-                <Rules/>
+                <Rules />
             </PaperBall>
             <ButtonBongrano sx={{ alignSelf: "end" }} onClick={() => navigate("../home")}>
                 Voltar para o início
