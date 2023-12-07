@@ -103,18 +103,16 @@ export const Verification: React.FC<VerificationProps> = ({}) => {
                 </p>
                 <Box sx={{ p: "4vw", gap: "2.5vw" }}>
                     {code.map((_, index) => (
-                        <>
-                            <InputBongrano
-                                sx={token_style}
-                                key={index}
-                                inputRef={(el) => (inputRefs.current[index] = el)}
-                                type="text"
-                                inputProps={{ maxLength: 1 }}
-                                value={code[index]}
-                                onChange={handleChange(index)}
-                                onKeyDown={handleKeyDown(index)}
-                            />
-                        </>
+                        <InputBongrano
+                            sx={token_style}
+                            key={index}
+                            inputRef={(el) => (inputRefs.current[index] = el)}
+                            type="text"
+                            inputProps={{ maxLength: 1 }}
+                            value={code[index]}
+                            onChange={handleChange(index)}
+                            onKeyDown={handleKeyDown(index)}
+                        />
                     ))}
                 </Box>
                 <Dots value={1} />

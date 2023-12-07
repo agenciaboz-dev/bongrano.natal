@@ -7,23 +7,30 @@ import { PaperBall } from "../components/PaperBall"
 import { ButtonBongrano } from "../components/ButtonBongrano"
 import { useNavigate } from "react-router-dom"
 import { InputBongrano } from "../components/InputBongrano"
-import { Form, Formik } from "formik"
+import { Form, Formik, useFormik } from "formik"
 import { Dots } from "../components/Dots"
 import { Rules } from "../components/Rules"
+import { useUser } from "../hooks/useUser"
+import { useArray } from "burgos-array"
 
 interface IndicateProps {}
 
 export const Indicate: React.FC<IndicateProps> = ({}) => {
     const navigate = useNavigate()
+    const list = useArray().newArray(3)
+    const { user, setUser } = useUser()
 
-    const values: Referral = {
-        name: "",
-        email: "",
-        whatsapp: "",
-    }
-    const handleSubmit = (values: Referral) => {
-        console.log(values)
-    }
+    if (!user) return null
+
+    const formik = useFormik<ReferralForm>({
+        initialValues: {
+            referree_id: user.id,
+            referrals: list.map(() => ({ email: "", name: "", whatsapp: "" })),
+        },
+        onSubmit: (values) => {
+            console.log(values)
+        },
+    })
 
     useEffect(() => {
         window.scroll(0, 0)
@@ -43,90 +50,38 @@ export const Indicate: React.FC<IndicateProps> = ({}) => {
                 </p>
 
                 <Box sx={{ width: "100%", p: "2vw", gap: "8vw", flexDirection: "column" }}>
-                    <Formik initialValues={values} onSubmit={handleSubmit}>
-                        {({ values, handleChange }) => (
-                            <Form>
-                                <Box sx={{ flexDirection: "column", gap: "3vw", alignItems: "center" }}>
-                                    <Avatar sx={{ bgcolor: colors.primary, width: "27vw", height: "27vw" }} />
-                                    <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>Indicação 1</p>
-                                    <InputBongrano
-                                        label="Nome Completo"
-                                        name="name"
-                                        placeholder="Nome Completo"
-                                        value={values.name}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                    <InputBongrano
-                                        label="E-mail"
-                                        name="email"
-                                        value={values.email}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                    <InputBongrano
-                                        label="Whatsapp"
-                                        name="whatsapp"
-                                        value={values.whatsapp}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </Box>
-                                <Box sx={{ flexDirection: "column", gap: "3vw", alignItems: "center" }}>
-                                    <Avatar sx={{ bgcolor: colors.primary, width: "27vw", height: "27vw" }} />
-                                    <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>Indicação 2</p>
-                                    <InputBongrano
-                                        label="Nome Completo"
-                                        name="name"
-                                        placeholder="Nome Completo"
-                                        value={values.name}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                    <InputBongrano
-                                        label="E-mail"
-                                        name="email"
-                                        value={values.email}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                    <InputBongrano
-                                        label="Whatsapp"
-                                        name="whatsapp"
-                                        value={values.whatsapp}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </Box>
-                                <Box sx={{ flexDirection: "column", gap: "3vw", alignItems: "center" }}>
-                                    <Avatar sx={{ bgcolor: colors.primary, width: "27vw", height: "27vw" }} />
-                                    <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>Indicação 3</p>
-                                    <InputBongrano
-                                        label="Nome Completo"
-                                        name="name"
-                                        placeholder="Nome Completo"
-                                        value={values.name}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                    <InputBongrano
-                                        label="E-mail"
-                                        name="email"
-                                        value={values.email}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                    <InputBongrano
-                                        label="Whatsapp"
-                                        name="whatsapp"
-                                        value={values.whatsapp}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </Box>
-                            </Form>
-                        )}
-                    </Formik>
+                    <form onSubmit={formik.handleSubmit} style={{ display: "contents" }}>
+                        {formik.values.referrals.map((item, index) => (
+                            <Box sx={{ flexDirection: "column", gap: "3vw", alignItems: "center" }} key={index}>
+                                <Avatar sx={{ bgcolor: colors.primary, width: "27vw", height: "27vw" }} />
+                                <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>
+                                    Indicação {index + 1}
+                                </p>
+                                <InputBongrano
+                                    label="Nome Completo"
+                                    name={`referrals[${index}].name`}
+                                    placeholder="Nome Completo"
+                                    value={item.name}
+                                    onChange={formik.handleChange}
+                                    required
+                                />
+                                <InputBongrano
+                                    label="E-mail"
+                                    name={`referrals[${index}].email`}
+                                    value={item.email}
+                                    onChange={formik.handleChange}
+                                    required
+                                />
+                                <InputBongrano
+                                    label="Whatsapp"
+                                    name={`referrals[${index}].whatsapp`}
+                                    value={item.whatsapp}
+                                    onChange={formik.handleChange}
+                                    required
+                                />
+                            </Box>
+                        ))}
+                    </form>
                 </Box>
                 <Dots value={2} />
             </PaperBall>
@@ -136,7 +91,7 @@ export const Indicate: React.FC<IndicateProps> = ({}) => {
                 <p style={{ width: "100%", fontWeight: "600", textAlign: "left", fontSize: "3.8vw" }}>
                     Regras de participação
                 </p>
-                <Rules/>
+                <Rules />
             </PaperBall>
             <Box sx={{ justifyContent: "space-between" }}>
                 <ButtonBongrano sx={{ alignSelf: "end" }} onClick={() => navigate("../verificate")}>
