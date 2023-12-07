@@ -7,7 +7,6 @@ import { colors } from "../styles/colors"
 import { PaperBall } from "../components/PaperBall"
 import { ButtonBongrano } from "../components/ButtonBongrano"
 import { useNavigate } from "react-router-dom"
-import { Dots } from "../components/Dots"
 import { Rules } from "../components/Rules"
 
 interface DeliveryProps {}
@@ -30,7 +29,6 @@ export const Delivery: React.FC<DeliveryProps> = ({}) => {
                     melhor se encaixa na sua agenda. Você pode escolher entre os dias 21, 22 ou 23 de dezembro, e especificar
                     se prefere receber pela manhã ou à tarde. Agende agora e prepare-se para uma doce surpresa!
                 </p>
-                <Dots value={3} />
             </PaperBall>
             <img src={Selo} alt="" />
             <PaperBall>

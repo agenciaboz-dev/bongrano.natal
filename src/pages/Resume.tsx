@@ -9,7 +9,6 @@ import { colors } from "../styles/colors"
 import { PaperBall } from "../components/PaperBall"
 import { ButtonBongrano } from "../components/ButtonBongrano"
 import { useNavigate } from "react-router-dom"
-import { Dots } from "../components/Dots"
 import { Rules } from "../components/Rules"
 
 interface ResumeProps {}
@@ -32,7 +31,6 @@ export const Resume: React.FC<ResumeProps> = ({}) => {
                     recebendo informações exclusivas e ofertas especiais da Bongrano. É rápido e fácil - apenas confirme seu
                     nome completo, endereço, e-mail e WhatsApp. Lembre-se, suas informações estão seguras conosco!
                 </p>
-                <Dots value={1} />
             </PaperBall>
             <PaperBall>
                 <img src={BallTwo} alt="" style={{ width: "45vw" }} />
@@ -43,7 +41,6 @@ export const Resume: React.FC<ResumeProps> = ({}) => {
                     celular dos seus amigos diretamente da sua lista de contatos - é simples assim. Além disso, vocês todos
                     participarão dos nossos emocionantes sorteios de 2024!
                 </p>
-                <Dots value={2} />
             </PaperBall>
             <PaperBall>
                 <img src={BallThree} alt="" style={{ width: "45vw" }} />
@@ -55,7 +52,6 @@ export const Resume: React.FC<ResumeProps> = ({}) => {
                     melhor se encaixa na sua agenda. Você pode escolher entre os dias 21, 22 ou 23 de dezembro, e especificar
                     se prefere receber pela manhã ou à tarde. Agende agora e prepare-se para uma doce surpresa!
                 </p>
-                <Dots value={3} />
             </PaperBall>
             <img src={Selo} alt="" />
             <PaperBall>

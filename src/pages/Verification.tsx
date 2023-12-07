@@ -9,7 +9,6 @@ import { ButtonBongrano } from "../components/ButtonBongrano"
 import { useLocation, useNavigate } from "react-router-dom"
 import { InputBongrano } from "../components/InputBongrano"
 import { token_style } from "../styles/input"
-import { Dots } from "../components/Dots"
 import { Rules } from "../components/Rules"
 import { useUser } from "../hooks/useUser"
 import { useSnackbar } from "burgos-snackbar"
@@ -115,7 +114,6 @@ export const Verification: React.FC<VerificationProps> = ({}) => {
                         />
                     ))}
                 </Box>
-                <Dots value={1} />
             </PaperBall>
 
             <img src={Selo} alt="" />

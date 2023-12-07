@@ -8,7 +8,6 @@ import { ButtonBongrano } from "../components/ButtonBongrano"
 import { useNavigate } from "react-router-dom"
 import { InputBongrano } from "../components/InputBongrano"
 import { Form, Formik } from "formik"
-import { Dots } from "../components/Dots"
 import { Rules } from "../components/Rules"
 import MaskedInput from "../components/MaskedInput"
 import masks from "../styles/masks"
@@ -39,8 +38,6 @@ export const Signup: React.FC<SignupProps> = ({}) => {
     }
 
     const handleSubmit = async (values: NewUser) => {
-        // console.log(values)
-
         const data = {
             ...values,
             cep: unmask(values.cep),
@@ -157,7 +154,6 @@ export const Signup: React.FC<SignupProps> = ({}) => {
                                     />
                                 </Box>
                             </Box>
-                            <Dots value={1} />
                         </PaperBall>
 
                         <img src={Selo} alt="" />
