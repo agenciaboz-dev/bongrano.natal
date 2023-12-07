@@ -40,7 +40,7 @@ export const Indicate: React.FC<IndicateProps> = ({}) => {
                     <Formik initialValues={values} onSubmit={handleSubmit}>
                         {({ values, handleChange }) => (
                             <Form>
-                                <Box sx={{ flexDirection: "column", gap: "2vw" }}>
+                                <Box sx={{ flexDirection: "column", gap: "4vw", alignItems: "center" }}>
                                     <Avatar sx={{ bgcolor: colors.primary, width: "27vw", height: "27vw" }} />
                                     <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>Indicação 1</p>
                                     <InputBongrano
@@ -66,9 +66,9 @@ export const Indicate: React.FC<IndicateProps> = ({}) => {
                                         required
                                     />
                                 </Box>
-                                <Box sx={{ flexDirection: "column", gap: "2vw" }}>
+                                <Box sx={{ flexDirection: "column", gap: "4vw",alignItems: "center"  }}>
                                     <Avatar sx={{ bgcolor: colors.primary, width: "27vw", height: "27vw" }} />
-                                    <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>Indicação 1</p>
+                                    <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>Indicação 2</p>
                                     <InputBongrano
                                         label="Nome Completo"
                                         name="name"
@@ -92,9 +92,9 @@ export const Indicate: React.FC<IndicateProps> = ({}) => {
                                         required
                                     />
                                 </Box>
-                                <Box sx={{ flexDirection: "column", gap: "2vw" }}>
+                                <Box sx={{ flexDirection: "column", gap: "4vw",alignItems: "center"  }}>
                                     <Avatar sx={{ bgcolor: colors.primary, width: "27vw", height: "27vw" }} />
-                                    <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>Indicação 1</p>
+                                    <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>Indicação 3</p>
                                     <InputBongrano
                                         label="Nome Completo"
                                         name="name"
@@ -118,7 +118,6 @@ export const Indicate: React.FC<IndicateProps> = ({}) => {
                                         required
                                     />
                                 </Box>
-                               
                             </Form>
                         )}
                     </Formik>
@@ -128,7 +127,7 @@ export const Indicate: React.FC<IndicateProps> = ({}) => {
             <img src={Selo} alt="" />
             <PaperBall>
                 <p style={{ width: "100%", fontWeight: "600", textAlign: "left", fontSize: "3.8vw" }}>
-                    Siga os passos ao lado
+                    Siga os passos abaixo
                 </p>
                 <p style={{ color: colors.terciary, textAlign: "left", fontSize: "3vw" }}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et

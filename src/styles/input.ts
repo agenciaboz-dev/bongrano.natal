@@ -3,8 +3,8 @@ import { colors } from "./colors"
 
 export const input_style: SxProps = {
     "& .MuiInputLabel-root": {
-        color: colors.terciary,
-        // fontSize: "0.8vw",
+        color: colors.primary,
+        fontSize: "3.3vw",
 
         "@media (max-width: 600px)": {
             // fontSize: "4vw",

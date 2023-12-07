@@ -23,9 +23,10 @@ export const Resume: React.FC<ResumeProps> = ({}) => {
             <PaperBall>
                 <img src={BallOne} alt="" style={{ width: "45vw" }} />
                 <p style={{ fontWeight: "600", fontSize: "3.8vw" }}>Atualização de cadastro</p>
-                <p style={{ textAlign: "center", color: colors.terciary, fontSize: "2.7vw" }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua.
+                <p style={{ textAlign: "center", color: colors.terciary, fontSize: "2.8vw" }}>
+                    Queremos garantir que você não perca nenhuma novidade! Por favor, atualize seus dados para continuar
+                    recebendo informações exclusivas e ofertas especiais da Bongrano. É rápido e fácil - apenas confirme seu
+                    nome completo, endereço, e-mail e WhatsApp. Lembre-se, suas informações estão seguras conosco!
                 </p>
             </PaperBall>
             <PaperBall>
@@ -47,7 +48,7 @@ export const Resume: React.FC<ResumeProps> = ({}) => {
             <img src={Selo} alt="" />
             <PaperBall>
                 <p style={{ width: "100%", fontWeight: "600", fontSize: "3.8vw", textAlign: "left" }}>
-                    Siga os passos ao lado
+                    Siga os passos abaixo
                 </p>
                 <p style={{ color: colors.terciary, textAlign: "left", fontSize: "3vw" }}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et

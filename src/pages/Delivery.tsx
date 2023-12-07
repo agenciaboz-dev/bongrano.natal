@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-
+import Gift from "../assets/Peça 1 - Presente Fechado.webp"
 import BallThree from "../assets/Peça 3 - Bolinha.webp"
 import Selo from "../assets/Peça 1.1 - Selo Natal.png"
 import { Box } from "@mui/material"
@@ -28,7 +28,9 @@ export const Delivery: React.FC<DeliveryProps> = ({}) => {
             </PaperBall>
             <img src={Selo} alt="" />
             <PaperBall>
-                <p style={{ width: "100%", fontWeight: "600", textAlign: "left",fontSize: "3.8vw"  }}>Siga os passos ao lado</p>
+                <p style={{ width: "100%", fontWeight: "600", textAlign: "left", fontSize: "3.8vw" }}>
+                    Siga os passos abaixo
+                </p>
                 <p style={{ color: colors.terciary, textAlign: "left", fontSize: "3vw" }}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                     dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
@@ -41,7 +43,8 @@ export const Delivery: React.FC<DeliveryProps> = ({}) => {
                     navigate("../finish")
                 }}
             >
-                Próximo
+                <img src={Gift} style={{ width: "10vw" }} />
+                Finalizar
             </ButtonBongrano>
         </Box>
     )

@@ -18,7 +18,7 @@ export const Finish: React.FC<FinishProps> = ({}) => {
         window.scroll(0, 0)
     }, [])
     return (
-        <Box sx={{ width: "100%", height: "100%", overflowY: "auto", gap: "4vw", flexDirection: "column" }}>
+        <Box sx={{ width: "100%", height: "100%", overflowY: "auto", gap: "0vw", flexDirection: "column" }}>
             <PaperBall>
                 <img src={Gift} alt="" style={{ width: "45vw" }} />
                 <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>Presente Agendado</p>
@@ -33,7 +33,7 @@ export const Finish: React.FC<FinishProps> = ({}) => {
             </PaperBall>
 
             <img src={Selo} alt="" />
-            <PaperBall>
+            {/* <PaperBall>
                 <p style={{ width: "100%", fontWeight: "600", textAlign: "left", fontSize: "3.8vw" }}>
                     Siga os passos ao lado
                 </p>
@@ -44,9 +44,9 @@ export const Finish: React.FC<FinishProps> = ({}) => {
                 </p>
 
                
-            </PaperBall>
-            <ButtonBongrano sx={{ alignSelf: "end" }} onClick={() => navigate("../indicate")}>
-                Próximo
+            </PaperBall> */}
+            <ButtonBongrano sx={{ alignSelf: "end" }} onClick={() => navigate("../home")}>
+                Voltar para o início
             </ButtonBongrano>
         </Box>
     )
