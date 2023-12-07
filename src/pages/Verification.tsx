@@ -31,12 +31,19 @@ export const Verification: React.FC<VerificationProps> = ({}) => {
         id: user?.id || 0,
         code: "",
     }
+    const handleKeyDown = (index: number) => (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === "Backspace" && code[index] === "" && index > 0) {
+            const newCode = [...code]
+            newCode[index - 1] = ""
+            setCode(newCode)
+            inputRefs.current[index - 1].focus()
+        }
+    }
 
     const handleChange = (index: number) => (event: ChangeEvent<HTMLInputElement>) => {
         const newCode = [...code]
         newCode[index] = event.target.value.toUpperCase()
-
-        if (index < 4 && newCode[index].length === 1) {
+        if (newCode[index].length === 1 && index < 4) {
             inputRefs.current[index + 1].focus()
         }
 
@@ -50,13 +57,6 @@ export const Verification: React.FC<VerificationProps> = ({}) => {
 
     const validateCode = (inputCode: string) => {
         io.emit("user:verify", { id: user?.id, code: inputCode })
-        if (inputCode === validCode) {
-            console.log("Código válido!")
-
-            // Coloque aqui a lógica de navegação ou validação
-        } else {
-            console.log("Código inválido")
-        }
     }
     useEffect(() => {
         io.on("application:status:approved", () => {
@@ -68,7 +68,7 @@ export const Verification: React.FC<VerificationProps> = ({}) => {
         })
         io.on("application:aproval:error", (data) => {
             const errorMessage = data.error ? data.error : "Falha no cadastro!"
-            snackbar({ severity: "error", text: errorMessage })
+            snackbar({ severity: "error", text: errorMessage[0].toUpperCase() + errorMessage.slice(1) })
         })
 
         return () => {
@@ -112,6 +112,7 @@ export const Verification: React.FC<VerificationProps> = ({}) => {
                                 inputProps={{ maxLength: 1 }}
                                 value={code[index]}
                                 onChange={handleChange(index)}
+                                onKeyDown={handleKeyDown(index)}
                             />
                         </>
                     ))}
