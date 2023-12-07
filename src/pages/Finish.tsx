@@ -13,9 +13,11 @@ import InstagramIcon from "@mui/icons-material/Instagram"
 import PublicSharpIcon from "@mui/icons-material/PublicSharp"
 import { Rules } from "../components/Rules"
 
-interface FinishProps {}
+interface FinishProps {
+    user: User
+}
 
-export const Finish: React.FC<FinishProps> = ({}) => {
+export const Finish: React.FC<FinishProps> = ({ user }) => {
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -27,9 +29,9 @@ export const Finish: React.FC<FinishProps> = ({}) => {
                 <img src={Gift} alt="" style={{ width: "45vw" }} />
                 <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>Presente Agendado</p>
                 <p style={{ textAlign: "center", color: colors.terciary, fontSize: "2.8vw" }}>
-                    Você completou todas as etapas e agora um maravilhoso presente da Bongrano pode está a caminho! Aguarde a
-                    confirmação de entrega caso seja sorteado. Enquanto isso, fique ligado em nossas redes sociais e não
-                    perca as novidades e ofertas exclusivas. Agradecemos por ser parte da família Bongrano!
+                    Você completou todas as etapas e agora um maravilhoso presente da Bongrano pode está a caminho! Aguarde a confirmação de entrega
+                    caso seja sorteado. Enquanto isso, fique ligado em nossas redes sociais e não perca as novidades e ofertas exclusivas. Agradecemos
+                    por ser parte da família Bongrano!
                 </p>
                 <Box sx={{ gap: "3vw" }}>
                     <PublicSharpIcon fontSize="large" onClick={() => {}} />
@@ -40,9 +42,7 @@ export const Finish: React.FC<FinishProps> = ({}) => {
 
             <img src={Selo} alt="" />
             <PaperBall>
-                <p style={{ width: "100%", fontWeight: "600", textAlign: "left", fontSize: "3.8vw" }}>
-                    Regras de participação
-                </p>
+                <p style={{ width: "100%", fontWeight: "600", textAlign: "left", fontSize: "3.8vw" }}>Regras de participação</p>
                 <Rules />
             </PaperBall>
             <ButtonBongrano sx={{ alignSelf: "end" }} onClick={() => navigate("../home")}>
