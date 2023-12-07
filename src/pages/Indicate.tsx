@@ -8,6 +8,8 @@ import { ButtonBongrano } from "../components/ButtonBongrano"
 import { useNavigate } from "react-router-dom"
 import { InputBongrano } from "../components/InputBongrano"
 import { Form, Formik } from "formik"
+import { Dots } from "../components/Dots"
+import { Rules } from "../components/Rules"
 
 interface IndicateProps {}
 
@@ -30,17 +32,21 @@ export const Indicate: React.FC<IndicateProps> = ({}) => {
         <Box sx={{ width: "100%", height: "100%", overflowY: "auto", gap: "4vw", flexDirection: "column" }}>
             <PaperBall>
                 <img src={BallTwo} alt="" style={{ width: "45vw" }} />
-                <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>Indicação de amigos</p>
+                <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>
+                    Compartilhe a Alegria com Amigos!
+                </p>
                 <p style={{ textAlign: "center", color: colors.terciary, fontSize: "2.8vw" }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua.
+                    A Bongrano acredita que a felicidade fica ainda melhor quando compartilhada. Indique três amigos de
+                    Curitiba e dê a eles a chance de desfrutar de nossos produtos incríveis! Basta adicionar os números de
+                    celular dos seus amigos diretamente da sua lista de contatos - é simples assim. Além disso, vocês todos
+                    participarão dos nossos emocionantes sorteios de 2024!
                 </p>
 
-                <Box sx={{ p: "4vw", gap: "5vw", flexDirection: "column" }}>
+                <Box sx={{ width: "100%", p: "2vw", gap: "8vw", flexDirection: "column" }}>
                     <Formik initialValues={values} onSubmit={handleSubmit}>
                         {({ values, handleChange }) => (
                             <Form>
-                                <Box sx={{ flexDirection: "column", gap: "4vw", alignItems: "center" }}>
+                                <Box sx={{ flexDirection: "column", gap: "3vw", alignItems: "center" }}>
                                     <Avatar sx={{ bgcolor: colors.primary, width: "27vw", height: "27vw" }} />
                                     <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>Indicação 1</p>
                                     <InputBongrano
@@ -66,7 +72,7 @@ export const Indicate: React.FC<IndicateProps> = ({}) => {
                                         required
                                     />
                                 </Box>
-                                <Box sx={{ flexDirection: "column", gap: "4vw",alignItems: "center"  }}>
+                                <Box sx={{ flexDirection: "column", gap: "3vw", alignItems: "center" }}>
                                     <Avatar sx={{ bgcolor: colors.primary, width: "27vw", height: "27vw" }} />
                                     <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>Indicação 2</p>
                                     <InputBongrano
@@ -92,7 +98,7 @@ export const Indicate: React.FC<IndicateProps> = ({}) => {
                                         required
                                     />
                                 </Box>
-                                <Box sx={{ flexDirection: "column", gap: "4vw",alignItems: "center"  }}>
+                                <Box sx={{ flexDirection: "column", gap: "3vw", alignItems: "center" }}>
                                     <Avatar sx={{ bgcolor: colors.primary, width: "27vw", height: "27vw" }} />
                                     <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>Indicação 3</p>
                                     <InputBongrano
@@ -122,22 +128,24 @@ export const Indicate: React.FC<IndicateProps> = ({}) => {
                         )}
                     </Formik>
                 </Box>
+                <Dots value={2} />
             </PaperBall>
 
             <img src={Selo} alt="" />
             <PaperBall>
                 <p style={{ width: "100%", fontWeight: "600", textAlign: "left", fontSize: "3.8vw" }}>
-                    Siga os passos abaixo
+                    Regras de participação
                 </p>
-                <p style={{ color: colors.terciary, textAlign: "left", fontSize: "3vw" }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat.{" "}
-                </p>
+                <Rules/>
             </PaperBall>
-            <ButtonBongrano sx={{ alignSelf: "end" }} onClick={() => navigate("../delivery")}>
-                Próximo
-            </ButtonBongrano>
+            <Box sx={{ justifyContent: "space-between" }}>
+                <ButtonBongrano sx={{ alignSelf: "end" }} onClick={() => navigate("../verificate")}>
+                    Voltar
+                </ButtonBongrano>
+                <ButtonBongrano sx={{ alignSelf: "end" }} onClick={() => navigate("../delivery")}>
+                    Próximo
+                </ButtonBongrano>
+            </Box>
         </Box>
     )
 }

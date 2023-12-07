@@ -9,6 +9,10 @@ import { ButtonBongrano } from "../components/ButtonBongrano"
 import { useNavigate } from "react-router-dom"
 import FacebookIcon from "@mui/icons-material/Facebook"
 import TwitterIcon from "@mui/icons-material/Twitter"
+import InstagramIcon from "@mui/icons-material/Instagram"
+import PublicSharpIcon from "@mui/icons-material/PublicSharp"
+import { Rules } from "../components/Rules"
+
 interface FinishProps {}
 
 export const Finish: React.FC<FinishProps> = ({}) => {
@@ -18,33 +22,30 @@ export const Finish: React.FC<FinishProps> = ({}) => {
         window.scroll(0, 0)
     }, [])
     return (
-        <Box sx={{ width: "100%", height: "100%", overflowY: "auto", gap: "0vw", flexDirection: "column" }}>
+        <Box sx={{ width: "100%", height: "100%", overflowY: "auto", gap: "4vw", flexDirection: "column" }}>
             <PaperBall>
                 <img src={Gift} alt="" style={{ width: "45vw" }} />
                 <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>Presente Agendado</p>
                 <p style={{ textAlign: "center", color: colors.terciary, fontSize: "2.8vw" }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua.
+                    Você completou todas as etapas e agora um maravilhoso presente da Bongrano pode está a caminho! Aguarde a
+                    confirmação de entrega caso seja sorteado. Enquanto isso, fique ligado em nossas redes sociais e não
+                    perca as novidades e ofertas exclusivas. Agradecemos por ser parte da família Bongrano!
                 </p>
-                <Box>
-                    <FacebookIcon />
-                    <TwitterIcon />
+                <Box sx={{ gap: "3vw" }}>
+                    <TwitterIcon fontSize="large" onClick={() => {}} />
+                    <PublicSharpIcon fontSize="large" onClick={() => {}} />
+                    <FacebookIcon fontSize="large" onClick={() => {}} />
+                    <InstagramIcon fontSize="large" onClick={() => {}} />
                 </Box>
             </PaperBall>
 
             <img src={Selo} alt="" />
-            {/* <PaperBall>
+            <PaperBall>
                 <p style={{ width: "100%", fontWeight: "600", textAlign: "left", fontSize: "3.8vw" }}>
-                    Siga os passos ao lado
+                    Regras de participação
                 </p>
-                <p style={{ color: colors.terciary, textAlign: "left", fontSize: "3vw" }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat.{" "}
-                </p>
-
-               
-            </PaperBall> */}
+                <Rules/>
+            </PaperBall>
             <ButtonBongrano sx={{ alignSelf: "end" }} onClick={() => navigate("../home")}>
                 Voltar para o início
             </ButtonBongrano>

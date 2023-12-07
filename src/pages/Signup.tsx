@@ -8,6 +8,8 @@ import { ButtonBongrano } from "../components/ButtonBongrano"
 import { useNavigate } from "react-router-dom"
 import { InputBongrano } from "../components/InputBongrano"
 import { Form, Formik } from "formik"
+import { Dots } from "../components/Dots"
+import { Rules } from "../components/Rules"
 
 interface SignupProps {}
 
@@ -36,11 +38,13 @@ export const Signup: React.FC<SignupProps> = ({}) => {
             <PaperBall sx={{ gap: "8vw" }}>
                 <Box sx={{ flexDirection: "column", alignItems: "center", gap: "4vw" }}>
                     <img src={BallOne} alt="" style={{ width: "45vw" }} />
-                    <p style={{ fontWeight: "600", fontSize: "3.8vw" }}>Atualização de cadastro</p>
+                    <p style={{ fontWeight: "600", fontSize: "3.8vw", textAlign: "center" }}>
+                        Atualize Seus Dados e Fique por Dentro!
+                    </p>
                     <p style={{ textAlign: "center", color: colors.terciary, fontSize: "2.8vw" }}>
-                    Queremos garantir que você não perca nenhuma novidade! Por favor, atualize seus dados para continuar
-                    recebendo informações exclusivas e ofertas especiais da Bongrano. É rápido e fácil - apenas confirme seu
-                    nome completo, endereço, e-mail e WhatsApp. Lembre-se, suas informações estão seguras conosco!
+                        Queremos garantir que você não perca nenhuma novidade! Por favor, atualize seus dados para continuar
+                        recebendo informações exclusivas e ofertas especiais da Bongrano. É rápido e fácil - apenas confirme
+                        seu nome completo, endereço, e-mail e WhatsApp. Lembre-se, suas informações estão seguras conosco!
                     </p>
                 </Box>
 
@@ -103,22 +107,24 @@ export const Signup: React.FC<SignupProps> = ({}) => {
                         )}
                     </Formik>
                 </Box>
+                <Dots value={1} />
             </PaperBall>
 
             <img src={Selo} alt="" />
             <PaperBall>
                 <p style={{ width: "100%", fontWeight: "600", textAlign: "left", fontSize: "3.8vw" }}>
-                    Siga os passos ao lado
+                    Regras de participação
                 </p>
-                <p style={{ color: colors.terciary, textAlign: "left", fontSize: "3vw" }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat.{" "}
-                </p>
+                <Rules />
             </PaperBall>
-            <ButtonBongrano sx={{ alignSelf: "end" }} onClick={() => navigate("../verificate")}>
-                Próximo
-            </ButtonBongrano>
+            <Box sx={{ justifyContent: "space-between" }}>
+                <ButtonBongrano sx={{ alignSelf: "end" }} onClick={() => navigate("../resume")}>
+                    Voltar
+                </ButtonBongrano>
+                <ButtonBongrano sx={{ alignSelf: "end" }} onClick={() => navigate("../verificate")}>
+                    Próximo
+                </ButtonBongrano>
+            </Box>
         </Box>
     )
 }

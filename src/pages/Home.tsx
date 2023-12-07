@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { ButtonBongrano } from "../components/ButtonBongrano"
 import { colors } from "../styles/colors"
 import { Box } from "@mui/material"
@@ -12,8 +12,11 @@ interface HomeProps {}
 
 export const Home: React.FC<HomeProps> = ({}) => {
     const navigate = useNavigate()
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
     return (
-        <Box sx={{ width: "100%", height: "100%", display: "flex", alignItems: "end", overflow: "hidden" }}>
+        <Box sx={{ width: "100%", height: "90%", display: "flex", alignItems: "end", overflow: "hidden" }}>
             <Box sx={{ flexDirection: "column", height: "100%", width: "100%", overflow: "hidden" }}>
                 <img src={RibbonH} alt="" style={{ width: "135vw", position: "fixed", left: "-2vw", top: "41vw" }} />
                 <img
@@ -26,9 +29,10 @@ export const Home: React.FC<HomeProps> = ({}) => {
                         position: "absolute",
                         left: "19vw",
                         top: "-2vw",
+                        overflow: "hidden" 
                     }}
                 />
-                <img src={Lace} alt="" style={{ width: "60vw", position: "absolute", left: "1vw", top: "20vw" }} />
+                <img src={Lace} alt="" style={{ width: "60vw", position: "absolute", left: "1vw", top: "20vw", }} />
             </Box>
             <Box
                 sx={{
@@ -42,7 +46,7 @@ export const Home: React.FC<HomeProps> = ({}) => {
                     right: "4vw",
                 }}
             >
-                <img src={Selo} alt="" style={{ width: "65vw" }} />
+                <img src={Selo} alt="" style={{ width: "80vw" }} />
                 <p
                     style={{
                         width: "100%",
