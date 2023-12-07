@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import BallTwo from "../assets/Peça 2 - Bolinha.webp"
 import Selo from "../assets/Peça 1.1 - Selo Natal.png"
-import { Avatar, Box } from "@mui/material"
+import { Avatar, Box, TextField } from "@mui/material"
 import { colors } from "../styles/colors"
 import { PaperBall } from "../components/PaperBall"
 import { ButtonBongrano } from "../components/ButtonBongrano"
@@ -13,6 +13,9 @@ import { useUser } from "../hooks/useUser"
 import { useArray } from "burgos-array"
 import { useIo } from "../hooks/useIo"
 import { useSnackbar } from "burgos-snackbar"
+import { input_style } from "../styles/input"
+import MaskedInput from "../components/MaskedInput"
+import masks from "../styles/masks"
 
 interface IndicateProps {}
 
@@ -100,11 +103,17 @@ export const Indicate: React.FC<IndicateProps> = ({}) => {
                                     onChange={formik.handleChange}
                                     required
                                 />
-                                <InputBongrano
+                                <TextField
                                     label="Whatsapp"
                                     name={`referrals[${index}].whatsapp`}
                                     value={item.whatsapp}
-                                    onChange={formik.handleChange}
+                                    onChange={ formik.handleChange }
+                                    sx={input_style}
+                                        InputProps={{
+                                            inputMode: "numeric",
+                                            inputComponent: MaskedInput,
+                                            inputProps: { mask: masks.phone },
+                                        }}
                                     required
                                 />
                             </Box>

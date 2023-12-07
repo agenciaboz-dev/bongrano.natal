@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import BallOne from "../assets/Peça 1 - Bolinha.webp"
 import Selo from "../assets/Peça 1.1 - Selo Natal.png"
-import { Box, CircularProgress } from "@mui/material"
+import { Box, CircularProgress, TextField } from "@mui/material"
 import { colors } from "../styles/colors"
 import { PaperBall } from "../components/PaperBall"
 import { ButtonBongrano } from "../components/ButtonBongrano"
@@ -15,6 +15,7 @@ import { useDataHandler } from "../hooks/useDataHandler"
 import { useIo } from "../hooks/useIo"
 import { useSnackbar } from "burgos-snackbar"
 import { useUser } from "../hooks/useUser"
+import { input_style } from "../styles/input"
 
 interface SignupProps {}
 
@@ -115,9 +116,10 @@ export const Signup: React.FC<SignupProps> = ({}) => {
                                         onChange={handleChange}
                                         required
                                     />
-                                    <InputBongrano
+                                    <TextField
                                         label="CEP"
                                         name="cep"
+                                        sx={input_style}
                                         InputProps={{
                                             inputMode: "numeric",
                                             inputComponent: MaskedInput,
@@ -140,11 +142,12 @@ export const Signup: React.FC<SignupProps> = ({}) => {
                                         onChange={handleChange}
                                         required
                                     />
-                                    <InputBongrano
+                                    <TextField
                                         label="Whatsapp"
                                         name="whatsapp"
                                         value={values.whatsapp}
                                         onChange={handleChange}
+                                        sx={input_style}
                                         InputProps={{
                                             inputMode: "numeric",
                                             inputComponent: MaskedInput,
