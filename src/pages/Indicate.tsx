@@ -124,7 +124,7 @@ export const Indicate: React.FC<IndicateProps> = ({ user }) => {
                 <ButtonBongrano sx={{ alignSelf: "end" }} type="submit">
                     Próximo
                 </ButtonBongrano>
-                {loading && <LinearProgress color="primary" sx={{ width: "100%", borderRadius: "5vw" }} />}
+                <Box>{loading && <LinearProgress color="primary" sx={{ width: "100%", borderRadius: "5vw" }} />}</Box>
             </form>
         </Box>
     )
