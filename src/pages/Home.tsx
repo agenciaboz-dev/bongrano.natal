@@ -50,10 +50,11 @@ export const Home: React.FC<HomeProps> = ({}) => {
                         position: "absolute",
                         left: "19vw",
                         top: "-2vw",
-                        overflow: "hidden"
+                        overflow: "hidden",
                     }}
                 />
                 <img src={Lace} alt="" style={{ width: "60vw", position: "absolute", left: "1vw", top: "20vw" }} />
+                <img src={Selo} alt="" style={{ width: "80vw", position: "absolute", top:"50vw", left:"19vw" }} />
             </Box>
             <Box
                 sx={{
@@ -63,10 +64,10 @@ export const Home: React.FC<HomeProps> = ({}) => {
                     flexDirection: "column",
                     alignItems: "center",
                     position: "absolute",
-                    top: "48vw",
-                    right: "4vw"
-                }}>
-                <img src={Selo} alt="" style={{ width: "80vw" }} />
+                    top: "117vw",
+                    right: "4vw",
+                }}
+            >
                 <p
                     style={{
                         width: "100%",
@@ -75,14 +76,16 @@ export const Home: React.FC<HomeProps> = ({}) => {
                         fontWeight: "400",
                         textAlign: "center",
                         fontSize: "5.5vw",
-                        margin: 0
-                    }}>
-                    Corte o a fita para revelar o seu presente
+                        margin: 0,
+                    }}
+                >
+                    Corte a fita para revelar o seu presente
                 </p>
                 <ButtonBongrano
                     onClick={() => {
                         navigate("../resume")
-                    }}>
+                    }}
+                >
                     Iniciar
                 </ButtonBongrano>
             </Box>
