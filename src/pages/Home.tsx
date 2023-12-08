@@ -45,11 +45,11 @@ export const Home: React.FC<HomeProps> = ({}) => {
                     alt=""
                     style={{
                         width: "20%",
-                        height: "101%",
+                        height: "100%",
                         objectFit: "none",
                         position: "absolute",
                         left: "19vw",
-                        top: "-2vw",
+                        top: "-0vw",
                         overflow: "hidden",
                     }}
                 />
@@ -64,24 +64,13 @@ export const Home: React.FC<HomeProps> = ({}) => {
                     flexDirection: "column",
                     alignItems: "center",
                     position: "absolute",
-                    top: "117vw",
+                    top: "132vw",
                     right: "4vw",
                 }}
             >
-                <p
-                    style={{
-                        width: "100%",
-                        alignSelf: "flex-end",
-                        color: colors.primary,
-                        fontWeight: "400",
-                        textAlign: "center",
-                        fontSize: "5.5vw",
-                        margin: 0,
-                    }}
-                >
-                    Corte a fita para revelar o seu presente
-                </p>
+            
                 <ButtonBongrano
+                    sx={{fontSize:"7vw", p:"0 5vw"}}
                     onClick={() => {
                         navigate("../resume")
                     }}
