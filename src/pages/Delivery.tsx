@@ -30,7 +30,7 @@ export const Delivery: React.FC<DeliveryProps> = ({ user }) => {
 
         const data: ChooseDateForm = {
             date: date.getTime().toString(),
-            user_id: user.id
+            user_id: user.id,
         }
 
         setLoading(true)
@@ -60,11 +60,13 @@ export const Delivery: React.FC<DeliveryProps> = ({ user }) => {
         <Box sx={{ width: "100%", height: "100%", overflowY: "auto", gap: "4vw", flexDirection: "column", padding: "10vw" }}>
             <PaperBall>
                 <img src={BallThree} alt="" style={{ width: "45vw" }} />
-                <p style={{ fontWeight: "600", fontSize: "3.8vw", textAlign: "center" }}>Escolha o Melhor Dia para Sua Surpresa!</p>
+                <p style={{ fontWeight: "600", fontSize: "3.8vw", textAlign: "center" }}>
+                    Escolha o Melhor Dia para Sua Surpresa!
+                </p>
                 <p style={{ textAlign: "center", color: colors.terciary, fontSize: "2.8vw" }}>
-                    Estamos ansiosos para lhe entregar um presente especial da Bongrano! Por favor, selecione a data que melhor se encaixa na sua
-                    agenda. Você pode escolher entre os dias 21, 22 ou 23 de dezembro, e especificar se prefere receber pela manhã ou à tarde. Agende
-                    agora e prepare-se para uma doce surpresa!
+                    Estamos ansiosos para lhe entregar um presente especial da Bongrano! Por favor, selecione a data que
+                    melhor se encaixa na sua agenda. Você pode escolher entre os dias 21, 22 ou 23 de dezembro, e especificar
+                    se prefere receber pela manhã ou à tarde. Agende agora e prepare-se para uma doce surpresa!
                 </p>
 
                 <DatePicker
@@ -73,12 +75,16 @@ export const Delivery: React.FC<DeliveryProps> = ({ user }) => {
                     minDate={new Date(2023, 11, 21)}
                     maxDate={new Date(2023, 11, 23)}
                     styles={{ day: { borderRadius: "100%" } }}
-                    getDayProps={(day) => ({ style: { color: day.getDate() == 23 ? (day.getDate() == date?.getDate() ? "white" : "black") : "" } })}
+                    getDayProps={(day) => ({
+                        style: { color: day.getDate() == 23 ? (day.getDate() == date?.getDate() ? "white" : "black") : "" },
+                    })}
                 />
             </PaperBall>
-            <img src={Selo} alt="" />
+            <img src={Selo} alt="" style={{ width: "100%" }} />
             <PaperBall>
-                <p style={{ width: "100%", fontWeight: "600", textAlign: "left", fontSize: "3.8vw" }}>Regras de participação</p>
+                <p style={{ width: "100%", fontWeight: "600", textAlign: "left", fontSize: "3.8vw" }}>
+                    Regras de participação
+                </p>
                 <Rules />
             </PaperBall>
             <Box sx={{ justifyContent: "space-between" }}>

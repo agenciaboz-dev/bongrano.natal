@@ -64,7 +64,7 @@ export const Finish: React.FC<FinishProps> = ({ user }) => {
                 </Box>
             </PaperBall>
 
-            <img src={Selo} alt="" />
+            <img src={Selo} alt="" style={{ width: "100%" }} />
             <PaperBall>
                 <p style={{ width: "100%", fontWeight: "600", textAlign: "left", fontSize: "3.8vw" }}>
                     Regras de participação

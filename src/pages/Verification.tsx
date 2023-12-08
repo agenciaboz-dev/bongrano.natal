@@ -29,7 +29,7 @@ export const Verification: React.FC<VerificationProps> = ({ user }) => {
 
     const initialValues: VerifyForm = {
         id: user?.id || 0,
-        code: ""
+        code: "",
     }
     const handleKeyDown = (index: number) => (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === "Backspace" && code[index] === "" && index > 0) {
@@ -90,15 +90,18 @@ export const Verification: React.FC<VerificationProps> = ({ user }) => {
         <Box sx={{ width: "100%", height: "100%", overflowY: "auto", gap: "4vw", flexDirection: "column", padding: "10vw" }}>
             <PaperBall>
                 <img src={BallOne} alt="" style={{ width: "45vw" }} />
-                <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>Atualize Seus Dados e Fique por Dentro!</p>
+                <p style={{ textAlign: "center", fontWeight: "600", fontSize: "3.8vw" }}>
+                    Atualize Seus Dados e Fique por Dentro!
+                </p>
                 <p style={{ textAlign: "center", color: colors.terciary, fontSize: "2.8vw" }}>
-                    Queremos garantir que você não perca nenhuma novidade! Por favor, atualize seus dados para continuar recebendo informações
-                    exclusivas e ofertas especiais da Bongrano. É rápido e fácil - apenas confirme seu nome completo, endereço, e-mail e WhatsApp.
-                    Lembre-se, suas informações estão seguras conosco!
+                    Queremos garantir que você não perca nenhuma novidade! Por favor, atualize seus dados para continuar
+                    recebendo informações exclusivas e ofertas especiais da Bongrano. É rápido e fácil - apenas confirme seu
+                    nome completo, endereço, e-mail e WhatsApp. Lembre-se, suas informações estão seguras conosco!
                 </p>
                 <p style={{ textAlign: "center", color: colors.terciary, fontSize: "2.8vw", padding: "2vw" }}>
-                    Enviamos um código de verificação para o telefone <span style={{ fontWeight: "bold" }}>{user.whatsapp}</span>. Por favor insira-o
-                    abaixo. Caso não tenha recebido, também enviamos o código para o email: <span style={{ fontWeight: "bold" }}>{user.email}</span>
+                    Enviamos um código de verificação para o telefone{" "}
+                    <span style={{ fontWeight: "bold" }}>{user.whatsapp}</span>. Por favor insira-o abaixo. Caso não tenha
+                    recebido, também enviamos o código para o email: <span style={{ fontWeight: "bold" }}>{user.email}</span>
                 </p>
                 <Box sx={{ p: "4vw", gap: "2.5vw" }}>
                     {code.map((_, index) => (
@@ -117,9 +120,11 @@ export const Verification: React.FC<VerificationProps> = ({ user }) => {
                 {loading && <LinearProgress color="primary" sx={{ width: "90%", borderRadius: "5vw" }} />}
             </PaperBall>
 
-            <img src={Selo} alt="" />
+            <img src={Selo} alt="" style={{ width: "100%" }} />
             <PaperBall>
-                <p style={{ width: "100%", fontWeight: "600", textAlign: "left", fontSize: "3.8vw" }}>Regras de participação</p>
+                <p style={{ width: "100%", fontWeight: "600", textAlign: "left", fontSize: "3.8vw" }}>
+                    Regras de participação
+                </p>
                 <Rules />
             </PaperBall>
             <Box sx={{ justifyContent: "space-between" }}>
